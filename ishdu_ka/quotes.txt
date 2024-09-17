@@ -1,0 +1,8 @@
+Садок вишневий коло хати,
+Хрущі над вишнями гудуть,
+Плугатарі з плугами йдуть,
+Співають ідучи дівчата,
+А матері вечерять ждуть.
+
+(& C:/Users/Logika/AppData/Local/Programs/Python/Python312/python.exe c:/proba/quotes_prog.py)
+(Т. Г. Шевченко)
