@@ -1,9 +1,14 @@
-Wiirmas K. 11
-Jori J. 7
-Laukastas N. 9
-Koruda E. 10
-Ikaewa M. 11
-Sigaus M. 6
-Horto D. 10
-Juelimann P. 12
-Soer T. 9
+M Wiirmas K. Ellesland 11
+M Jori J. Nemezieg 7
+F Laukastas N. Ellesland 9
+M Laukastas G. Ellesland 9
+M Koruda E. Povyrja 10
+F Ikaewa M. Kasagawa 11
+F Sigaus M. Ellesland 6
+F Horto D. Menilir 10
+M Juelimann P. Noefburg 12
+M Soer T. Noefburg 9
+M Kuun E. Akanatsu 12
+F Iris N. Nemezieg 10
+M Lampeeri S. Imerni 9
+F Goender O. Nemezieg 7

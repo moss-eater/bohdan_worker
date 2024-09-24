@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>555</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Wise Notes - Розумні Нотатки</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTextEdit" name="note_text">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>0</y>
+      <width>561</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(25, 144, 18);
+background-color: rgb(205, 255, 196);</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="note_list">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>20</y>
+      <width>221</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(25, 144, 18);
+background-color: rgb(205, 255, 196);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="note_list_label">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>-15</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Список Нотаток</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="tag_list">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>260</y>
+      <width>221</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(25, 144, 18);
+background-color: rgb(205, 255, 196);</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="note_save">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>212</y>
+      <width>221</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(52, 170, 25);
+border-color: rgb(48, 143, 25);
+border-top-color: rgb(48, 143, 25);
+border-bottom-color: rgb(48, 143, 25);
+border-right-color: rgb(48, 143, 25);
+border-left-color: rgb(48, 143, 25);</string>
+    </property>
+    <property name="text">
+     <string>Зберегти нотатку</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="note_create">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>190</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(52, 170, 25);
+border-color: rgb(48, 143, 25);
+border-top-color: rgb(48, 143, 25);
+border-bottom-color: rgb(48, 143, 25);
+border-right-color: rgb(48, 143, 25);
+border-left-color: rgb(48, 143, 25);</string>
+    </property>
+    <property name="text">
+     <string>Створити нотатку</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="note_delete">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>190</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(52, 170, 25);
+border-color: rgb(48, 143, 25);
+border-top-color: rgb(48, 143, 25);
+border-bottom-color: rgb(48, 143, 25);
+border-right-color: rgb(48, 143, 25);
+border-left-color: rgb(48, 143, 25);</string>
+    </property>
+    <property name="text">
+     <string>Видалити нотатку</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tag_list_search">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>492</y>
+      <width>221</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(52, 170, 25);
+border-color: rgb(48, 143, 25);
+border-top-color: rgb(48, 143, 25);
+border-bottom-color: rgb(48, 143, 25);
+border-right-color: rgb(48, 143, 25);
+border-left-color: rgb(48, 143, 25);</string>
+    </property>
+    <property name="text">
+     <string>Шукати нотатки по тегу</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tag_list_unpin">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>470</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(52, 170, 25);
+border-color: rgb(48, 143, 25);
+border-top-color: rgb(48, 143, 25);
+border-bottom-color: rgb(48, 143, 25);
+border-right-color: rgb(48, 143, 25);
+border-left-color: rgb(48, 143, 25);</string>
+    </property>
+    <property name="text">
+     <string>Відкріпити від нотатки</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tag_list_add">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>470</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(52, 170, 25);
+border-color: rgb(48, 143, 25);
+border-top-color: rgb(48, 143, 25);
+border-bottom-color: rgb(48, 143, 25);
+border-right-color: rgb(48, 143, 25);
+border-left-color: rgb(48, 143, 25);</string>
+    </property>
+    <property name="text">
+     <string>Додати до нотатки</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="line_edit_tag">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>450</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(25, 144, 18);
+background-color: rgb(205, 255, 196);</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tag_list_label">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>230</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Список Тегів</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="line_edit_label">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>430</y>
+      <width>81</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 7.5pt &quot;MS Shell Dlg 2&quot; ;
+color: rgb(83, 83, 83);</string>
+    </property>
+    <property name="text">
+     <string>Введіть теги...</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
