@@ -56,6 +56,19 @@ class Widget(QMainWindow):
             else:
                 print('no')
 
+        def add_tag(self):
+            if self.ui.note_list.selectedItems():
+                key = self.ui.note_list.selectedItems()[0].text()
+                tag = self.ui.line_tag_edit.text()
+                if not tag in self.notes[key]["teg"]:
+                    self.notes[key]["teg"].append(tag)
+                    self.ui.tag_list.addItem(tag)
+                    self.ui.line_tag_edit.clear()
+                with open("notes_data.json", "w", encoding = "UTF-8") as file:
+                    json.dump(self.notes, file, sort_keys= True, ensure_ascii=False)
+                print(self.notes)
+            else:
+                print("no")
 if __name__ == "__main__":
     app = QWidget.QApplication([])
     ex = Widget()
