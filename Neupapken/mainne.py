@@ -22,11 +22,11 @@ with Image.open('original.jpg') as flower_original:
 #    flower_blured.show()
 
     flower_up = flower_original.transpose(Image.FLIP_LEFT_RIGHT)
-    flower_blured.save("up.jpg")
+    flower_up.save("up.jpg")
     print("Sizee uppedd fluwer:", flower_up.size)
     print("Fuermat uppedd fluwer:", flower_up.format)
     print("Le moeden au uppedd fluwer:", flower_up.mode)
-#    flower_up.show()
+    flower_up.show()
 
     flower_mirror = flower_original.transpose(Image.FLIP_LEFT_RIGHT)
     flower_blured.save("up.jpg")

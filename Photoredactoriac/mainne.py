@@ -2,29 +2,35 @@ import os
 from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QVBoxLayout, QHBoxLayout,  QLabel, QListWidget, QPushButton
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageEnhance
+from PIL.ImageFilter import SHARPEN, BLUR, EDGE_ENHANCE
 
 app = QApplication([])
 window = QWidget()
 window.resize(1000, 500)
 window.setWindowTitle("Heasia Editorricume")
 
-label_image = QLabel("pic")
+label_image = QLabel("Pictogrammicanus")
 button_directory = QPushButton("folde")
 list_offiles = QListWidget()
 
 button_left = QPushButton("turn lefte")
 button_right = QPushButton("turn rigt")
 button_mirror = QPushButton("mirrore")
-button_sharp = QPushButton("radicalise")
-button_bw = QPushButton("black|white")
+button_dist = QPushButton("radicalite")
+button_blur = QPushButton("bluricon")
+button_edge = QPushButton("edgynium")
+button_bw = QPushButton("blak|wyte")
 
 rowlow = QHBoxLayout()
 rowlow.addWidget(button_left)
 rowlow.addWidget(button_right)
 rowlow.addWidget(button_mirror)
-rowlow.addWidget(button_sharp)
+rowlow.addWidget(button_dist)
+rowlow.addWidget(button_blur)
+rowlow.addWidget(button_edge)
 rowlow.addWidget(button_bw)
+
 
 column1 = QVBoxLayout()
 column1.addWidget(button_directory)
@@ -70,6 +76,13 @@ class ImageProcessor():
         self.dir = None
         self.image = None
         self.save_dir = "Modified/"
+
+    def saveImage(self):
+        path = os.path.join(self.dir, self.save_dir)
+        if not(os.path.exists(path) or os.path.isdir(path)):
+            os.mkdir(path)
+        image_path = os.path.join(path, self.filename)
+        self.image.save(image_path)
     
     def loadImage(self, dir, filename):
         self.dir = dir
@@ -91,13 +104,41 @@ class ImageProcessor():
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
         self.showImage(image_path)
 
-    # saves file in a subfolder
-    def saveImage(self):
-        path = os.path.join(self.dir, self.save_dir)
-        if not(os.path.exists(path) or os.path.isdir(path)):
-            os.mkdir(path)
-        image_path = os.path.join(path, self.filename)
-        self.image.save(image_path)
+    def do_left(self):
+        self.image = self.image.transpose(Image.ROTATE_90)
+        self.saveImage()
+        image_path = os.path.join(self.dir, self.save_dir, self.filename)
+        self.showImage(image_path)
+
+    def do_right(self):
+        self.image = self.image.transpose(Image.ROTATE_270)
+        self.saveImage()
+        image_path = os.path.join(self.dir, self.save_dir, self.filename)
+        self.showImage(image_path)
+
+    def do_mirror(self):
+        self.image = self.image.transpose(Image.FLIP_LEFT_RIGHT)
+        self.saveImage()
+        image_path = os.path.join(self.dir, self.save_dir, self.filename)
+        self.showImage(image_path)
+
+    def do_enhance(self):
+        self.image = self.image.filter(SHARPEN)
+        self.saveImage()
+        image_path = os.path.join(self.dir, self.save_dir, self.filename)
+        self.showImage(image_path)
+    
+    def do_blur(self):
+        self.image = self.image.filter(BLUR)
+        self.saveImage()
+        image_path = os.path.join(self.dir, self.save_dir, self.filename)
+        self.showImage(image_path)
+
+    def do_edge(self):
+        self.image = self.image.filter(EDGE_ENHANCE)
+        self.saveImage()
+        image_path = os.path.join(self.dir, self.save_dir, self.filename)
+        self.showImage(image_path)
 
 workimage = ImageProcessor()
 
@@ -109,7 +150,13 @@ def showChosenItem():
         workimage.showImage(image_path)
 
 button_directory.clicked.connect(showFilenamesList)
-button_bw.clicked.connect(workimage.do_bw)
 list_offiles.currentRowChanged.connect(showChosenItem)
+button_bw.clicked.connect(workimage.do_bw)
+button_blur.clicked.connect(workimage.do_blur)
+button_left.clicked.connect(workimage.do_left)
+button_edge.clicked.connect(workimage.do_edge)
+button_right.clicked.connect(workimage.do_right)
+button_dist.clicked.connect(workimage.do_enhance)
+button_mirror.clicked.connect(workimage.do_mirror)
 
 app.exec_()
