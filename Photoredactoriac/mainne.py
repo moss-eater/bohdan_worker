@@ -2,34 +2,34 @@ import os
 from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QVBoxLayout, QHBoxLayout,  QLabel, QListWidget, QPushButton
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PIL import Image, ImageFilter, ImageEnhance
+from PIL import Image
 from PIL.ImageFilter import SHARPEN, BLUR, EDGE_ENHANCE
 
 app = QApplication([])
 window = QWidget()
 window.resize(1000, 500)
-window.setWindowTitle("Heasia Editorricume")
+window.setWindowTitle("Легкий Фоторедактор")
 
-label_image = QLabel("Pictogrammicanus")
-button_directory = QPushButton("folde")
+label_image = QLabel("Тут буде зображенння, оберіть будь ласка у папці")
+button_directory = QPushButton("Обрати папку")
 list_offiles = QListWidget()
 
-button_left = QPushButton("turn lefte")
-button_right = QPushButton("turn rigt")
-button_mirror = QPushButton("mirrore")
-button_dist = QPushButton("radicalite")
-button_blur = QPushButton("bluricon")
-button_edge = QPushButton("edgynium")
-button_bw = QPushButton("blak|wyte")
+button_lefte = QPushButton("Повернути наліво")
+button_rigt = QPushButton("Повернути напрво")
+button_mirrore = QPushButton("Відзеркалити")
+button_distoratum = QPushButton("Різкість")
+button_bluuricon = QPushButton("Розмиття")
+button_ejjinium = QPushButton("Контури")
+button_blachwicht = QPushButton("Чорнобілий")
 
 rowlow = QHBoxLayout()
-rowlow.addWidget(button_left)
-rowlow.addWidget(button_right)
-rowlow.addWidget(button_mirror)
-rowlow.addWidget(button_dist)
-rowlow.addWidget(button_blur)
-rowlow.addWidget(button_edge)
-rowlow.addWidget(button_bw)
+rowlow.addWidget(button_lefte)
+rowlow.addWidget(button_rigt)
+rowlow.addWidget(button_mirrore)
+rowlow.addWidget(button_distoratum)
+rowlow.addWidget(button_bluuricon)
+rowlow.addWidget(button_ejjinium)
+rowlow.addWidget(button_blachwicht)
 
 
 column1 = QVBoxLayout()
@@ -98,43 +98,43 @@ class ImageProcessor():
         label_image.setPixmap(pixmapimage)
         label_image.show()
     
-    def do_bw(self):
+    def do_blachwachen(self):
         self.image = self.image.convert("L")
         self.saveImage()
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
         self.showImage(image_path)
 
-    def do_left(self):
+    def do_leftenk(self):
         self.image = self.image.transpose(Image.ROTATE_90)
         self.saveImage()
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
         self.showImage(image_path)
 
-    def do_right(self):
+    def do_rightangh(self):
         self.image = self.image.transpose(Image.ROTATE_270)
         self.saveImage()
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
         self.showImage(image_path)
 
-    def do_mirror(self):
+    def do_mirrorei(self):
         self.image = self.image.transpose(Image.FLIP_LEFT_RIGHT)
         self.saveImage()
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
         self.showImage(image_path)
 
-    def do_enhance(self):
+    def do_enhansechin(self):
         self.image = self.image.filter(SHARPEN)
         self.saveImage()
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
         self.showImage(image_path)
     
-    def do_blur(self):
+    def do_bluuriconna(self):
         self.image = self.image.filter(BLUR)
         self.saveImage()
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
         self.showImage(image_path)
 
-    def do_edge(self):
+    def do_ejjiniumhau(self):
         self.image = self.image.filter(EDGE_ENHANCE)
         self.saveImage()
         image_path = os.path.join(self.dir, self.save_dir, self.filename)
@@ -151,12 +151,12 @@ def showChosenItem():
 
 button_directory.clicked.connect(showFilenamesList)
 list_offiles.currentRowChanged.connect(showChosenItem)
-button_bw.clicked.connect(workimage.do_bw)
-button_blur.clicked.connect(workimage.do_blur)
-button_left.clicked.connect(workimage.do_left)
-button_edge.clicked.connect(workimage.do_edge)
-button_right.clicked.connect(workimage.do_right)
-button_dist.clicked.connect(workimage.do_enhance)
-button_mirror.clicked.connect(workimage.do_mirror)
+button_blachwicht.clicked.connect(workimage.do_blachwachen)
+button_bluuricon.clicked.connect(workimage.do_bluuriconna)
+button_lefte.clicked.connect(workimage.do_leftenk)
+button_ejjinium.clicked.connect(workimage.do_ejjiniumhau)
+button_rigt.clicked.connect(workimage.do_rightangh)
+button_distoratum.clicked.connect(workimage.do_enhansechin)
+button_mirrore.clicked.connect(workimage.do_mirrorei)
 
 app.exec_()
