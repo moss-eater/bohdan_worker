@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -10,13 +11,24 @@ bg = pygame.transform.scale(pygame.image.load('le_fieldince.png'), (WIDTH, HEIGH
 
 clock = pygame.time.Clock()
 
-x1 = 300
-y1 = 100
+def coordsx():
+    liste = [2, 3, 4, 6, 12]
+    dili = random.choice(liste)
+    x = WIDTH/dili
+    return x
+
+def coordsy():
+    liste = [2, 3, 6]
+    dili = random.choice(liste)
+    y = HEIGHT/dili
+    return y
+
+x1 = coordsx()
+y1 = coordsy()
+x2 = coordsx()
+y2 = coordsy()
 
 speed = 5
-
-x2 = 100
-y2 = 300
 
 first_player = pygame.transform.scale(pygame.image.load('player_1.png'), (40, 40))
 second_player = pygame.transform.scale(pygame.image.load('player_2.png'), (40, 40))
