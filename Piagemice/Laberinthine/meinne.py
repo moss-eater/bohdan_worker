@@ -2,25 +2,16 @@ import pygame
 import pygame.mixer
 pygame.init()
 pygame.mixer.init()
-pygame.font.init()
 
 WIDTH = 1200
 HEIGHT = 600
-INCAWEHA = (180, 0, 0)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Laberinthihe")
-bg = pygame.transform.scale(pygame.image.load('tloes.png'), (WIDTH, HEIGHT))
-playinhu = pygame.mixer.music.load('Boiling-Mine-OST-Stone-Story-RPG.ogg')
+bg = pygame.transform.scale(pygame.image.load('./Laberinthihe/tloes.png'), (WIDTH, HEIGHT))
+playinhu = pygame.mixer.music.load('./Laberinthihe/Boiling-Mine-OST-Stone-Story-RPG.ogg')
 pygame.mixer.music.play()
 
-gay = pygame.mixer.Sound("gay.ogg")
-straight = pygame.mixer.Sound("straight.ogg")
-
 clock = pygame.time.Clock()
-
-font = pygame.font.Font(None, 35)
-winesse = font.render('You gained back thine tools', True, (INCAWEHA))
-loisien = font.render('You lost to the guardians of stolen', True, (INCAWEHA))
 
 
 class GameSprite(pygame.sprite.Sprite):
@@ -79,35 +70,11 @@ class Gigurandes(GameSprite):
         if self.direction == 'right':
             self.rect.x += self.speed
 
-class Ta(pygame.sprite.Sprite):
-    def __init__(self, clr1, clr2, clr3, ta_har, ta_jel, ta_w, ta_h):
-        super().__init__()
-        self.colour1 = clr1
-        self.colour2 = clr2
-        self.colour3 = clr3
-        self.width = ta_w
-        self.height = ta_h
+palehin = Palehin('./Laberinthihe/gravienker.png', 100, HEIGHT - 150, 4)
+gigurandes_ih = Gigurandes('./Laberinthihe/giaghenti.png', WIDTH - 170, 300, 3)
+gigurandes_ej = Gigurandes('./Laberinthihe/giaghenti.png', WIDTH - 1000, 100, 2)
+sahurdaes = GameSprite('./Laberinthihe/der_prizen.png', WIDTH - 170, HEIGHT - 170, 0)
 
-        self.image = pygame.Surface((self.width, self.height))
-        self.image.fill((clr1, clr2, clr3))
-
-        self.rect = self.image.get_rect()
-        self.rect.x = ta_har
-        self.rect.y = ta_jel
-
-    def draw_ta(self):
-        window.blit(self.image, (self.rect.x, self.rect.y))
-
-palehin = Palehin('gravienker.png', 100, HEIGHT - 150, 4)
-gigurandes_ih = Gigurandes('giaghenti.png', WIDTH - 170, 300, 3)
-gigurandes_ej = Gigurandes('giaghenti.png', WIDTH - 1000, 100, 2)
-sahurdaes = GameSprite('der_prizen.png', WIDTH - 170, HEIGHT - 170, 0)
-
-ta1 = Ta(154, 140, 0, 200, 90, 450, 10)
-ta2 = Ta(154, 140, 0, 0, 510, 265, 10)
-ta3 = Ta(154, 140, 0, 0, 445, 205, 10)
-ta4 = Ta(154, 140, 0, 200, 200, 10, 255)
-ta5 = Ta(154, 140, 0, 265, 200, 10, 320)
 
 game = True
 finish = False
@@ -115,7 +82,6 @@ while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
-
     if finish != True:
         window.fill((0, 0, 0))
         window.blit(bg, (0, 0))
@@ -130,22 +96,6 @@ while game:
         gigurandes_ej.update_2()
 
         sahurdaes.reset()
-
-        ta1.draw_ta()
-        ta2.draw_ta()
-        ta3.draw_ta()
-        ta4.draw_ta()
-        ta5.draw_ta()
-
-        if pygame.sprite.collide_rect(palehin, gigurandes_ih) or pygame.sprite.collide_rect(palehin, gigurandes_ej) or pygame.sprite.collide_rect(palehin, ta1):
-            finish = True
-            window.blit(loisien, (200, 200))
-            gay.play()
-
-        if pygame.sprite.collide_rect(palehin, sahurdaes):
-            finish = True
-            window.blit(winesse, (200, 200))
-            straight.play()    
 
         #when palehin toucher sahurdaes do pygame.mixer.music.stop(playinhu)
 
