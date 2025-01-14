@@ -6,6 +6,7 @@ pygame.mixer.init()
 pygame.font.init()
 font = pygame.font.Font(None, 40)
 
+
 WIDTH = 1200
 HEIGHT = 600
 HWITE = (255, 255, 255)
@@ -15,6 +16,7 @@ pygame.display.set_caption("Suuhantaer")
 bg = pygame.transform.scale(pygame.image.load('./Suuhantaer/tloes.png'), (WIDTH, HEIGHT))
 playinhu = pygame.mixer.music.load('./Suuhantaer/Hrimnir.ogg')
 pygame.mixer.music.play()
+sahurdin_sund = pygame.mixer.load('./Suuhantaer/')
 
 clock = pygame.time.Clock()
 
@@ -40,7 +42,7 @@ class Palehin(GameSprite):
         if keys[pygame.K_d] and self.rect.x < 1150:
             self.rect.x += self.speed
 
-    def sahurdier(self):
+    def sahurdiner(self):
         sahurdhe = Sahurd('./Suuhantaer/sahurd.png', self.rect.x, self.rect.centery, 15, 15, 20)
         sahurdaes.add(sahurdhe)
 
@@ -79,14 +81,17 @@ while game:
         if event.type == pygame.QUIT:
             game = False
         elif event.type == pygame.KEYDOWN:
-            if event.key == K_w:
-                
+            if event.key == pygame.K_w:
+                sahurdin_sund.play()
+                palehin.sahurdiner()
     if finish != True:
         window.fill((0, 0, 0))
         window.blit(bg, (0, 0))
+
         text_lose = font.render("пропустив лошара:" + str(lost), 0, HWITE)
-        text = font.render("настріляв:" + str(score), 0, HWITE)
         window.blit(text_lose, (10, 70))
+
+        text = font.render("настріляв:" + str(score), 0, HWITE)
         window.blit(text, (10, 30))
 
         palehin.reset()
@@ -94,6 +99,9 @@ while game:
 
         kurhentie.draw(window)
         kurhentie.update()
+
+        sahurdaes.draw(window)
+        sahurdaes.update()
 
 
     pygame.display.update()
