@@ -12,15 +12,15 @@ HWITE = (255, 255, 255)
 BLACH = (0, 0, 0)
 REDD = (230, 0, 0)
 
-font = pygame.font.Font(None, 45)
-font1 = pygame.font.Font(None, 25)
+font = pygame.font.SysFont(None, 45)
+font1 = pygame.font.SysFont(None, 25)
 win = font.render("ПєРєМОГА", True, REDD)
 loss = font.render("Тебе з'їли", True, REDD)
 
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Suuhantaer")
-bg = pygame.transform.scale(pygame.image.load('tloes.png'), (WIDTH, HEIGHT))
+bg = pygame.transform.scale(pygame.image.load('C:\Хильченко_1700\bohdan_worker\Piagemice\Suuhantaer\tloes.png'), (WIDTH, HEIGHT))
 playinhu = pygame.mixer.music.load('Batalenh.ogg')
 pygame.mixer.music.play()
 sahurdin_sund = pygame.mixer.Sound('sahursunt.ogg')
@@ -60,6 +60,7 @@ goooooooooooooooooooool = 20
 lost = 0
 max_lost = 4
 liite = 2
+timerinh = 0
 class Kurhen(GameSprite):
     def update(self):
         self.rect.y += self.speed
@@ -101,9 +102,8 @@ giaghenti = Kurhen('giaghenti.png', randint(80, WIDTH - 80), -40, 160, 160, 1)
 
 sahurdaes = pygame.sprite.Group()
 
-rel_time = False
+rel_time = True
 num_sahurdua = 0
-
 game = True
 finish = False
 while game:
@@ -113,13 +113,13 @@ while game:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
-                if num_sahurdua < 6 and rel_time == False:
+                if num_sahurdua < 6 and rel_time == True:
                     num_sahurdua += 1
                     sahurdin_sund.play()
                     palehin.sahurdiner()
-            if num_sahurdua >= 6 and rel_time == False:
+            if num_sahurdua >= 6 and rel_time == True:
                 last_time = timer()
-                rel_time = True
+                rel_time = False
 
 
     if finish != True:
@@ -140,10 +140,10 @@ while game:
         sarjie.draw(window)
         sarjie.update()
 
-
-        giaghenti.update()
-        if liite > 0:
-            giaghenti.reset()
+        if timerinh >= 5:
+            giaghenti.update()
+            if liite > 0:
+                giaghenti.reset()
 
         colligion = pygame.sprite.spritecollide(giaghenti, sahurdaes, True)
         if colligion:
@@ -160,22 +160,24 @@ while game:
             now_time = timer()
 
             if now_time - last_time < 3:
-                reload = font1.render('шукаю нові мечі...')
+                reload = font1.render('шукаю нові мечі...', 0, HWITE)
                 window.blit(reload, (0, 0))
             else:
                 num_sahurdua = 0
-                rel_time = False
+                rel_time = True
 
 
         collizion = pygame.sprite.groupcollide(kurhentie, sahurdaes, True, True)
         for z in collizion:
             score += 1
+            timerinh += 1
             kurhent = Kurhen('kurhen.png', randint(80, WIDTH - 80), -40, 50, 80, randint(1, 2))
             kurhentie.add(kurhent)
 
         collition = pygame.sprite.groupcollide(sarjie, sahurdaes, True, True)
         for t in collition:
             score += 2
+            timerinh += 2
             sarjat = Sarja('sarja.png', randint(80, WIDTH - 80), -40, 90, 90, randint(1, 4))
             sarjie.add(sarjat)
 
